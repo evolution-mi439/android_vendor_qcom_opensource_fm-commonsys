@@ -597,6 +597,7 @@ public class FmReceiver extends FmTransceiver
       }
 
       setFMPowerState(subPwrLevel_FMRx_Starting);
+      SystemProperties.set("vendor.hw.fm.ant.enable","1");
       Log.v(TAG, "enable: CURRENT-STATE : FMOff ---> NEW-STATE : FMRxStarting");
       status = super.enable(configSettings, FmTransceiver.FM_RX);
 
@@ -745,6 +746,7 @@ public class FmReceiver extends FmTransceiver
             return status;
       }
 
+      SystemProperties.set("vendor.hw.fm.ant.enable","0");
       setFMPowerState(subPwrLevel_FMTurning_Off);
       Log.v(TAG, "disable: CURRENT-STATE : FMRxOn ---> NEW-STATE : FMTurningOff");
       super.disable();
